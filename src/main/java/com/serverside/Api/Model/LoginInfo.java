@@ -10,6 +10,7 @@ import java.sql.Timestamp;
 @Data
 @NoArgsConstructor
 
+
 public class LoginInfo {
     private  String email;
 
