@@ -16,7 +16,7 @@ import java.util.Date;
 public class Users_data {
 
     @Id
-    @Column(name = "id_code" ,columnDefinition="default '34562'")
+    @Column(name = "id_code" )
     private Long id_code=0L;
 
     @Column(name="first_name")
