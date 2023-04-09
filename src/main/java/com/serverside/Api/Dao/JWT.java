@@ -8,7 +8,7 @@ import java.util.Date;
 
 
 public class JWT {
-     String SECRET_KEY = "ll-99_##";
+     String SECRET_KEY = "ll-99_@@";
 
 
     public  String JWebGenerate(String u) {

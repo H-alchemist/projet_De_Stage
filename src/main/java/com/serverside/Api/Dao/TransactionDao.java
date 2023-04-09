@@ -30,7 +30,7 @@ public class TransactionDao {
      UserDao userdao;
     CheckingData checkingData;
 
-    String SECRET_KEY = "ll-99_##";
+    String SECRET_KEY = "ll-99_@@";
     public Transaction add(Transaction t) {
 
          String jwt=t.getJwt();
