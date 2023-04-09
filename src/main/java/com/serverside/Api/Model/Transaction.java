@@ -33,4 +33,6 @@ public class Transaction {
 
     @Column(name="Jwt")
     private  String jwt;
+
+
 }

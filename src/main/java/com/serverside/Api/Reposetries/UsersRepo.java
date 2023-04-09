@@ -17,13 +17,14 @@ public interface UsersRepo extends JpaRepository<Users_data,Long> {
 
    @Transactional
    @Modifying
-   @Query("UPDATE Users_data e SET e.amount = e.amount + :x WHERE e.id_code = :id")
+   @Query("UPDATE Users_data e SET e.amount = e.amount - :x WHERE e.id_code = :id")
    void addTAmount(@Param("id") Long id, @Param("x") Double x);
+
 
 
    @Transactional
    @Modifying
-   @Query("UPDATE Users_data e SET e.amount = e.amount - :x WHERE e.id_code = :id")
+   @Query("UPDATE Users_data e SET e.amount = e.amount + :x WHERE e.id_code = :id")
    void  subtractTAmount(@Param("id") Long id, @Param("x") Double x);
 
 }

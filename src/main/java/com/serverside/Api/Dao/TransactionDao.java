@@ -57,6 +57,7 @@ public class TransactionDao {
              userdao.subtractAmount(t.getSender_id(), t.getAmount());
 
              t.setJwt("");
+             t.setAmount(userdao.getOne(t.getReceiver_id()).getAmount());
              return transactionR.save(t);
          }
 
