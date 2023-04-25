@@ -11,20 +11,20 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Repository
-public interface UsersRepo extends JpaRepository<Users_data,Long> {
+public interface UsersRepo extends JpaRepository<Users_data,Integer> {
 
    Optional<Users_data> findByEmail(String email);
 
    @Transactional
    @Modifying
    @Query("UPDATE Users_data e SET e.amount = e.amount - :x WHERE e.id_code = :id")
-   void addTAmount(@Param("id") Long id, @Param("x") Double x);
+   void addTAmount(@Param("id") int id, @Param("x") Double x);
 
 
 
    @Transactional
    @Modifying
    @Query("UPDATE Users_data e SET e.amount = e.amount + :x WHERE e.id_code = :id")
-   void  subtractTAmount(@Param("id") Long id, @Param("x") Double x);
+   void  subtractTAmount(@Param("id") int id, @Param("x") Double x);
 
 }

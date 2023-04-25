@@ -39,7 +39,7 @@ public class UsersControlleur {
     }
 
     @GetMapping("/users/getOne/{id}")
-    public Users_data getOne(@PathVariable Long id){
+    public Users_data getOne(@PathVariable int id){
        return userdao.getOne(id);
     }
 

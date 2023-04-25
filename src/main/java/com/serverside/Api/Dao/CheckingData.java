@@ -28,11 +28,11 @@ public class CheckingData {
     JWT jwt;
 
 
-    public Long generateId_code(){
+    public int generateId_code(){
         Random random = new Random();
 
         // generate a random number with 8 digits
-        Long randomNum = random.nextLong(900000000) + 100000000;
+        int randomNum = random.nextInt(900000000) + 100000000;
 
         return randomNum;
     }
@@ -70,13 +70,13 @@ public class CheckingData {
     String SECRET_KEY = "ll-99_##";
 
     private static final int expirationTime = 60;
-    public  String JWebGenerate(Long i) {
+    public  String JWebGenerate(int i) {
 
         Date now = new Date();
         Date expiration = new Date(now.getTime() + TimeUnit.MINUTES.toMillis(expirationTime));
 
 
-         String u =i.toString();
+         String u =i+"";
         return  Jwts.builder()
                 .setSubject(u)
                 .setIssuedAt(now)

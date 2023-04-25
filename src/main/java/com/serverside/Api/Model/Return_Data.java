@@ -8,7 +8,7 @@ public class Return_Data {
 
 
 
-    private Long id_code=0L;
+    private int id_code=0;
 
 
     private String first_name;
@@ -26,7 +26,7 @@ public class Return_Data {
 
     private String jwt_date;
 
-    public Return_Data(Long id_code, String first_name, String second_name, double amount, String email, String jwt_date) {
+    public Return_Data(int id_code, String first_name, String second_name, double amount, String email, String jwt_date) {
         this.id_code = id_code;
         this.first_name = first_name;
         this.second_name = second_name;

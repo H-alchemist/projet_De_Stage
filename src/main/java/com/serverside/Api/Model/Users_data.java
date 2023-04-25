@@ -16,8 +16,8 @@ import java.util.Date;
 public class Users_data {
 
     @Id
-    @Column(name = "id_code" ,columnDefinition="default '34562'")
-    private Long id_code=0L;
+    @Column(name = "id_code" )
+    private int id_code=0;
 
     @Column(name="first_name")
     private String first_name;
@@ -36,7 +36,7 @@ public class Users_data {
     @Column(name = "login_date")
     private Timestamp jwt_date;
 
-    public Users_data(Long id_code, String first_name, String second_name, double amount, String email, String password,Timestamp jwt_date) {
+    public Users_data(int id_code, String first_name, String second_name, double amount, String email, String password,Timestamp jwt_date) {
         this.id_code = id_code;
         this.first_name = first_name;
         this.second_name = second_name;

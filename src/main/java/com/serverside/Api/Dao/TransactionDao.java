@@ -49,7 +49,7 @@ public class TransactionDao {
         System.out.println(t.getReceiver_id());
         System.out.println(t.getSender_id());
 
-         if( t.getReceiver_id().equals(t.getSender_id())) {
+         if( t.getReceiver_id()==t.getSender_id()) {
 
           return null;
          }else {

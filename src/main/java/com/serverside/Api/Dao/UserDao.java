@@ -27,10 +27,10 @@ public class UserDao {
     // add user
     public Return_Data add(Users_data u){
         String p=u.getPassword();
-                Long x= checkingData.generateId_code();
-        if (x != null && !isBlank(String.valueOf(x))) {
-             x= checkingData.generateId_code();
-        }
+                int x= checkingData.generateId_code();
+//        if (x != null && !isBlank(String.valueOf(x))) {
+//             x= checkingData.generateId_code();
+//        }
 
       u.setId_code(x);
         u.setJwt_date(checkingData.getTime());
@@ -49,8 +49,10 @@ public class UserDao {
 
     }
 
-    public Users_data getOne(Long id){
+    public Users_data getOne(int id){
        return userR.findById(id).get();
+
+
     }
 
 
@@ -81,7 +83,7 @@ public class UserDao {
 
 
     }
-    public boolean addAmount(Long id , Double x){
+    public boolean addAmount(int id , Double x){
 
         userR.addTAmount(id,x);
 
@@ -90,7 +92,7 @@ public class UserDao {
     }
 
 
-    public boolean subtractAmount(Long id , Double x){
+    public boolean subtractAmount(int id , Double x){
 
         userR.subtractTAmount(id , x);
 

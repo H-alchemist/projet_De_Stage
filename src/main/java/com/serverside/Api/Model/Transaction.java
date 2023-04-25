@@ -1,10 +1,7 @@
 package com.serverside.Api.Model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,14 +14,15 @@ import lombok.NoArgsConstructor;
 public class Transaction {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "sender_id")
-    private Long sender_id;
+    private int sender_id;
 
 
     @Column(name = "receiver_id")
-    private Long receiver_id;
+    private int receiver_id;
 
 
     @Column(name = "amount")
