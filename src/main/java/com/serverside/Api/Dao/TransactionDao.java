@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 
@@ -25,14 +27,14 @@ public class TransactionDao {
     Transactionrepo transactionR;
 
 
-
+    Timestamp instant;
     @Autowired
      UserDao userdao;
     CheckingData checkingData;
 
     String SECRET_KEY = "ll-99_@@";
     public Transaction add(Transaction t) {
-
+        instant= Timestamp.from(Instant.now());
          String jwt=t.getJwt();
         Claims claims;
 
@@ -45,45 +47,34 @@ public class TransactionDao {
             String userId = claims.getSubject();
         Date expiration = claims.getExpiration();
 
-        System.out.println(userId);
-        System.out.println(t.getReceiver_id());
-        System.out.println(t.getSender_id());
 
-         if( t.getReceiver_id()==t.getSender_id()) {
+        int x=t.getReceiverId();
 
-          return null;
-         }else {
-             userdao.addAmount(t.getReceiver_id(), t.getAmount());
-             userdao.subtractAmount(t.getSender_id(), t.getAmount());
+        System.out.println(x);
+
+        System.out.println("kmkkmkmmkmk");
+
+//         if( t.getReceiverId()==t.getSenderId()) {
+//
+//          return null;
+//         }else {
+             userdao.addAmount(t.getReceiverId(), t.getAmount());
+             userdao.subtractAmount(t.getSenderId(), t.getAmount());
 
              t.setJwt("");
-             t.setAmount(userdao.getOne(t.getReceiver_id()).getAmount());
+             t.setAmount(userdao.getOne(t.getReceiverId()).getAmount());
+             t.setDateDeT(instant);
+             t.setReceiverName(userdao.getOne(t.getReceiverId()).getFirst_name() + ""+userdao.getOne(t.getReceiverId()).getSecond_name());
+             t.setSenderName(userdao.getOne(t.getSenderId()).getFirst_name() + ""+userdao.getOne(t.getSenderId()).getSecond_name());
+
              return transactionR.save(t);
-         }
+//         }
 
 
 
     }
 
 
-//    public Boolean validateJwt(String jwt ,Long id ){
-//        System.out.println("check");
-//        Claims claims = Jwts.parser()
-//                .setSigningKey(SECRET_KEY)
-//                .parseClaimsJws(jwt)
-//                .getBody();
-//
-//            String userId = claims.getSubject();
-//        Date expiration = claims.getExpiration();
-//
-//
-//        System.out.println("check 1");
-//        Date now = new Date();
-//        Date currentT = new Date(now.getTime());
-//
-//
-//
-//    }
 
     public List<Transaction> getAll(){
 
@@ -92,6 +83,18 @@ public class TransactionDao {
     }
 
 
+    public List<Object[]> getTR(int x){
+
+        return transactionR.getReceiverList(x);
+
+    }
+
+
+    public List<Object[]> getTS(int x){
+
+        return transactionR.getSenderList(x);
+
+    }
 
 
 

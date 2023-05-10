@@ -50,8 +50,8 @@ public class UserDao {
     }
 
     public Users_data getOne(int id){
-       return userR.findById(id).get();
-
+//       return userR.findById(id).get();
+        return userR.getOne(id);
 
     }
 

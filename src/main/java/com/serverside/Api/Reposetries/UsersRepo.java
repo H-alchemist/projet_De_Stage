@@ -15,6 +15,7 @@ public interface UsersRepo extends JpaRepository<Users_data,Integer> {
 
    Optional<Users_data> findByEmail(String email);
 
+
    @Transactional
    @Modifying
    @Query("UPDATE Users_data e SET e.amount = e.amount - :x WHERE e.id_code = :id")

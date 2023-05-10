@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "Transaction")
 @Data
@@ -18,11 +20,11 @@ public class Transaction {
     private int id;
 
     @Column(name = "sender_id")
-    private int sender_id;
+    private int senderId;
 
 
-    @Column(name = "receiver_id")
-    private int receiver_id;
+    @Column(name = "receiverId")
+    private int receiverId;
 
 
     @Column(name = "amount")
@@ -31,6 +33,16 @@ public class Transaction {
 
     @Column(name="Jwt")
     private  String jwt;
+
+    @Column(name="dateDeT")
+    private Date dateDeT;
+
+
+    @Column(name="receiverName")
+    private String receiverName;
+
+    @Column(name="senderName")
+    private String senderName;
 
 
 }

@@ -32,6 +32,24 @@ public class TransactionControlleur {
 
     }
 
+    @GetMapping("/transaction/receiver_id/{id}")
+    public ResponseEntity<List<Object[]>> getRList(@PathVariable("id") int receiver_id) {
+        List<Object[]> transactions = transactionDao.getTR(receiver_id);
+        if (transactions.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(transactions, HttpStatus.OK);
+    }
+
+
+    @GetMapping("/transaction/sender_id/{id}")
+    public ResponseEntity<List<Object[]>> getSList(@PathVariable("id") int sender_id) {
+        List<Object[]> transactions = transactionDao.getTS(sender_id);
+        if (transactions.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<>(transactions, HttpStatus.OK);
+    }
 
 
 
