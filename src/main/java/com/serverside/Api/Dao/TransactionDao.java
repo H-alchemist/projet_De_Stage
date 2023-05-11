@@ -54,10 +54,10 @@ public class TransactionDao {
 
         System.out.println("kmkkmkmmkmk");
 
-//         if( t.getReceiverId()==t.getSenderId()) {
-//
-//          return null;
-//         }else {
+         if( t.getReceiverId()==t.getSenderId()) {
+
+          return null;
+         }else {
              userdao.addAmount(t.getReceiverId(), t.getAmount());
              userdao.subtractAmount(t.getSenderId(), t.getAmount());
 
@@ -68,7 +68,7 @@ public class TransactionDao {
              t.setSenderName(userdao.getOne(t.getSenderId()).getFirst_name() + ""+userdao.getOne(t.getSenderId()).getSecond_name());
 
              return transactionR.save(t);
-//         }
+         }
 
 
 
@@ -83,21 +83,35 @@ public class TransactionDao {
     }
 
 
-    public List<Object[]> getTR(int x){
+    public List<Object> getTR(int x){
 
         return transactionR.getReceiverList(x);
 
     }
 
 
-    public List<Object[]> getTS(int x){
+    public List<Object> getTS(int x){
+
+        return transactionR.getSenderList(x);
+
+    }
+
+    public List<Object> getRlist(int x){
 
         return transactionR.getSenderList(x);
 
     }
 
 
+    public List<Transaction> getR(int x){
 
+        return transactionR.getTransactionsByReceiverId(x);
 
+    }
 
+    public List<Transaction> getS(int x){
+
+        return transactionR.getTransactionsBySenderId(x);
+
+    }
 }

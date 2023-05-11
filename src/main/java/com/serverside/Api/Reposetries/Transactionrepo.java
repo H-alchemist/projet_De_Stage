@@ -15,6 +15,9 @@ public interface Transactionrepo extends JpaRepository <Transaction , Long> {
     List<Transaction>  getTransactionsByReceiverId(int receiver_id);
 
 
+    List<Transaction>  getTransactionsBySenderId(int receiver_id);
+
+
 
 
 //        @Query("SELECT SUM(t.amount) FROM Transaction t WHERE t.receiver_id = :receiverId")
@@ -22,11 +25,13 @@ public interface Transactionrepo extends JpaRepository <Transaction , Long> {
 
 
    @Query("SELECT t.amount, t.dateDeT,t.receiverName, t.senderName  FROM Transaction t WHERE t.receiverId = :receiverId")
-        List<Object[]> getReceiverList(@Param("receiverId") int receiverId);
+        List<Object> getReceiverList(@Param("receiverId") int receiverId);
 
     @Query("SELECT t.amount, t.dateDeT,t.receiverName, t.senderName  FROM Transaction t WHERE t.senderId = :senderId")
-    List<Object[]> getSenderList(@Param("senderId") int senderId);
+    List<Object> getSenderList(@Param("senderId") int senderId);
 
 
+//    @Query("SELECT  t.id,t.senderId , t.receiverId , t.jwt ,t.amount, t.dateDeT,t.receiverName, t.senderName  FROM Transaction t WHERE t.receiverId = :receiverId")
+//    List<Transaction> getRList(@Param("receiverId") int receiverId);
 
 }
