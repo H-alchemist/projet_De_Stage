@@ -61,7 +61,7 @@ public class TransactionControlleur {
 
     @GetMapping("/transaction/sender_id/{id}")
     public ResponseEntity<List<Transaction>> getSSList(@PathVariable("id") int sender_id) {
-        List<Transaction> transactions = transactionDao.getR(sender_id);
+        List<Transaction> transactions = transactionDao.getS(sender_id);
         if (transactions.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

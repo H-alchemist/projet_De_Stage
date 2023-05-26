@@ -15,7 +15,9 @@ public interface Transactionrepo extends JpaRepository <Transaction , Long> {
     List<Transaction>  getTransactionsByReceiverId(int receiver_id);
 
 
-    List<Transaction>  getTransactionsBySenderId(int receiver_id);
+    List<Transaction>  getTransactionsBySenderId(int sender_id);
+
+
 
 
 

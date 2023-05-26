@@ -50,11 +50,11 @@ public class TransactionDao {
 
         int x=t.getReceiverId();
 
-        System.out.println(x);
-
-        System.out.println("kmkkmkmmkmk");
-
          if( t.getReceiverId()==t.getSenderId()) {
+
+             System.out.println(x);
+
+             System.out.println("kmkkmkmmkmk");
 
           return null;
          }else {
@@ -62,7 +62,7 @@ public class TransactionDao {
              userdao.subtractAmount(t.getSenderId(), t.getAmount());
 
              t.setJwt("");
-             t.setAmount(userdao.getOne(t.getReceiverId()).getAmount());
+             t.setAmount(t.getAmount());
              t.setDateDeT(instant);
              t.setReceiverName(userdao.getOne(t.getReceiverId()).getFirst_name() + ""+userdao.getOne(t.getReceiverId()).getSecond_name());
              t.setSenderName(userdao.getOne(t.getSenderId()).getFirst_name() + ""+userdao.getOne(t.getSenderId()).getSecond_name());
