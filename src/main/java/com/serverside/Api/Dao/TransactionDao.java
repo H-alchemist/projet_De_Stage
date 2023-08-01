@@ -52,9 +52,6 @@ public class TransactionDao {
 
          if( t.getReceiverId()==t.getSenderId()) {
 
-             System.out.println(x);
-
-             System.out.println("kmkkmkmmkmk");
 
           return null;
          }else {
@@ -82,25 +79,6 @@ public class TransactionDao {
 
     }
 
-
-    public List<Object> getTR(int x){
-
-        return transactionR.getReceiverList(x);
-
-    }
-
-
-    public List<Object> getTS(int x){
-
-        return transactionR.getSenderList(x);
-
-    }
-
-    public List<Object> getRlist(int x){
-
-        return transactionR.getSenderList(x);
-
-    }
 
 
     public List<Transaction> getR(int x){
