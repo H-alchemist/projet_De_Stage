@@ -30,13 +30,7 @@ public class UsersControlleur {
              return new ResponseEntity<String>( HttpStatus.BAD_REQUEST);
          }
     }
-    @GetMapping("/users/getAll")
-    public List<Users_data> getAllT(){
 
-
-        return userdao.getAll();
-
-    }
 
     @GetMapping("/users/getOne/{id}")
     public Users_data getOne(@PathVariable int id){
